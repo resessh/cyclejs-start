@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "public",
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "removeComments": false,
+    "sourceMap": true
+  },
+  "files": [
+    "src/scripts/main.ts"
+  ],
+  "include": [
+    "src/scripts/**/*.ts"
+  ]
+}

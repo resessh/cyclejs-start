@@ -1,0 +1,32 @@
+{
+  "name": "cyclejs-start",
+  "version": "0.0.0",
+  "author": "manse",
+  "dependencies": {
+    "@cycle/dom": "^17.1.0",
+    "@cycle/http": "^13.2.0",
+    "@cycle/isolate": "^2.1.0",
+    "@cycle/rxjs-run": "^7.0.0",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.0.3",
+    "xstream": "^10.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "browser-sync": "^2.18.5",
+    "browserify": "^13.1.1",
+    "connect-modrewrite": "^0.9.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "tsify": "^3.0.1",
+    "typescript": "^2.2.2",
+    "uglify-js": "^2.8.21",
+    "watchify": "^3.8.0"
+  },
+  "license": "UNLICENCED",
+  "private": true,
+  "scripts": {
+    "watch": "bash bin/build.sh"
+  }
+}
