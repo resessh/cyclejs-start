@@ -42,6 +42,16 @@ function renderHeightSlider(height: number) {
     ]);
 }
 
+function renderView(state$: Observable<{ weight: number, height: number, bmi: number }>): Observable<VNode> {
+    return state$.map(({ weight, height, bmi }) => {
+        return div([
+            renderHeightSlider(height),
+            renderWeightSlider(weight),
+            h1('.result', [bmi])
+        ])
+    });
+}
+
 function calcBmi(weight: number, height: number) {
     const heightMeters = height / 100;
     const bmi = weight / (heightMeters * heightMeters);
@@ -59,16 +69,7 @@ function main({DOM}: So): Si {
         return { weight, height, bmi: calcBmi(weight, height) }
     })
 
-    const dom$ = state$.map(
-        ({weight, height, bmi}) =>
-            div(
-                [
-                    renderHeightSlider(height),
-                    renderWeightSlider(weight),
-                    h1('.result', [bmi])
-                ]
-            )
-    );
+    const dom$ = renderView(state$);
 
     return {
         DOM: dom$
