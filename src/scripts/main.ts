@@ -42,6 +42,12 @@ function renderHeightSlider(height: number) {
     ]);
 }
 
+function calcBmi(weight: number, height: number) {
+    const heightMeters = height / 100;
+    const bmi = weight / (heightMeters * heightMeters);
+    return Math.round(bmi * 100)/100;
+}
+
 function main({DOM}: So): Si {
     const inputWeight$ = DOM.select('.weight-slider').events('input');
     const inputHeight$ = DOM.select('.height-slider').events('input');
@@ -58,7 +64,7 @@ function main({DOM}: So): Si {
     const bmi$ = Observable.combineLatest(
         weight$,
         height$,
-        (weight, height) => weight / height / height * 10000
+        (weight, height) => calcBmi(weight, height)
     );
 
     const dom$ = Observable.combineLatest(
