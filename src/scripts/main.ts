@@ -49,14 +49,14 @@ function calcBmi(weight: number, height: number) {
 }
 
 function main({DOM}: So): Si {
-    const changeWeight$ = DOM.select('.weight-slider').events('input');
-    const changeHeight$ = DOM.select('.height-slider').events('input');
+    const changeWeight$ = DOM.select('.weight-slider').events('input').map(ev => Number((ev.target as HTMLInputElement).value));
+    const changeHeight$ = DOM.select('.height-slider').events('input').map(ev => Number((ev.target as HTMLInputElement).value));
 
-    const weight$ = changeHeight$.map((e: CycleDOMEvent) => Number((e.target as HTMLInputElement).value)).startWith(65);
-    const height$ = changeHeight$.map((e: CycleDOMEvent) => Number((e.target as HTMLInputElement).value)).startWith(160);
+    const weight$ = changeHeight$.startWith(65);
+    const height$ = changeHeight$.startWith(160);
 
     const state$ = Observable.combineLatest(weight$, height$, (weight, height) => {
-        return { weight, height, bmi:calcBmi(weight, height) }
+        return { weight, height, bmi: calcBmi(weight, height) }
     })
 
     const dom$ = state$.map(
